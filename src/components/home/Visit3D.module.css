@@ -25,15 +25,19 @@
 
 @media (min-width: 768px) {
   .visit {
-    margin-top: calc(var(--u) * 86);
+    position: relative;
+    margin-top: calc(var(--u) * 120);
     padding-inline: var(--gutter);
   }
 
   .title {
-    padding-inline: 0;
-    font-size: calc(var(--u) * 31.49);
-    text-transform: none;
-    white-space: normal;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   .titleEnd {
@@ -42,7 +46,7 @@
 
   .viewer {
     height: calc(var(--u) * 900.1);
-    margin-top: calc(var(--u) * 31.5);
+    margin-top: 0;
     border-radius: var(--radius);
   }
 }

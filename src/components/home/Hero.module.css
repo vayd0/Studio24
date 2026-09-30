@@ -1,7 +1,7 @@
 .hero {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: calc(var(--u) * 735) auto;
+  grid-template-rows: calc(var(--u) * 600) auto;
 }
 
 .media {
@@ -52,10 +52,7 @@
 }
 
 .lead {
-  grid-area: 2 / 1;
-  max-width: calc(var(--u) * 320);
-  margin: calc(var(--u) * 38) var(--gutter) 0 calc(var(--u) * 31);
-  font-size: calc(var(--u) * 20);
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -98,6 +95,7 @@
   }
 
   .lead {
+    display: block;
     max-width: calc(var(--u) * 677.05);
     margin: 0;
     font-size: calc(var(--u) * 31.49);

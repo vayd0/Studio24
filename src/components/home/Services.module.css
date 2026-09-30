@@ -14,6 +14,29 @@
 
 .item {
   font-size: calc(var(--u) * 19.4);
+  text-align: left;
+  -webkit-text-stroke: 0.012em currentColor;
+  opacity: 0.35;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+.itemLabel {
+  display: block;
+}
+
+.item:hover,
+.item:focus-visible {
+  opacity: 0.7;
+}
+
+.item[aria-pressed="true"] {
+  opacity: 1;
+}
+
+.item:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 .separatorItem {

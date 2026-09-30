@@ -36,10 +36,26 @@ const projects: Project[] = [
     year: "2024",
     image: { src: "/images/projet-2.png", alt: "Maison organique blanche au toit végétalisé en forêt" },
   },
-  { title: "Exemple", year: "2024" },
-  { title: "Exemple", year: "2024" },
-  { title: "Exemple", year: "2024" },
-  { title: "Exemple", year: "2024" },
+  {
+    title: "Exemple",
+    year: "2024",
+    image: { src: "/images/projet-3.jpg", alt: "Maison en bois sombre et pierre, grande terrasse vitrée au cœur d'une forêt" },
+  },
+  {
+    title: "Exemple",
+    year: "2024",
+    image: { src: "/images/projet-4.jpg", alt: "Maison blanche contemporaine avec piscine à flanc de montagne, face à une vallée alpine" },
+  },
+  {
+    title: "Exemple",
+    year: "2024",
+    image: { src: "/images/projet-5.jpg", alt: "Maison circulaire vitrée en pierre et bois sur une falaise en bord de mer au coucher du soleil" },
+  },
+  {
+    title: "Exemple",
+    year: "2024",
+    image: { src: "/images/projet-6.jpg", alt: "Maison en bardage bois et béton avec toiture végétalisée dans une forêt de fougères" },
+  },
 ];
 
 function pinHorizontalScroll(section: HTMLElement, track: HTMLElement, isMobile: boolean) {
