@@ -145,9 +145,9 @@ export default function RevealAnimations() {
       revealFades();
       revealExpand();
       parallax();
-      parallaxSpeed();
       document.fonts?.ready.then(() => ScrollTrigger.refresh());
     });
+    mm.add("(prefers-reduced-motion: no-preference) and (min-width: 768px)", parallaxSpeed);
     return () => mm.revert();
   });
 
