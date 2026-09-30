@@ -71,14 +71,8 @@ ul {
   scroll-margin-top: calc(var(--u) * 110);
 }
 
-html:has([data-intro-overlay]) {
-  background: #050505;
-}
-
-html[data-intro-playing],
-html[data-intro-playing] body {
+html[data-intro-playing] {
   overflow: hidden;
-  overscroll-behavior: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
