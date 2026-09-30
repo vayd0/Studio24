@@ -1,7 +1,13 @@
 .intro {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100lvh;
   z-index: 300;
+  touch-action: none;
+  overscroll-behavior: none;
   display: grid;
   place-items: center;
   background: #050505;

@@ -6,7 +6,11 @@
   --menu-ease: cubic-bezier(0.76, 0, 0.24, 1);
   --menu-ease-out: cubic-bezier(0.19, 1, 0.22, 1);
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100lvh;
   z-index: 200;
   visibility: hidden;
   pointer-events: none;
@@ -41,7 +45,8 @@
   right: var(--menu-gap);
   display: flex;
   width: var(--menu-width);
-  max-height: calc(100% - 2 * var(--menu-gap));
+  max-height: calc(100vh - 2 * var(--menu-gap));
+  max-height: calc(100svh - 2 * var(--menu-gap));
 }
 
 .sheet,
@@ -273,7 +278,8 @@
   }
 
   .drawer {
-    bottom: var(--menu-gap);
+    height: calc(100vh - 2 * var(--menu-gap));
+    height: calc(100svh - 2 * var(--menu-gap));
   }
 
   .nav {
