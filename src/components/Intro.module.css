@@ -17,10 +17,13 @@
 
 .logo {
   display: block;
-  font-family: var(--font-kaigo);
-  font-size: calc(var(--u) * 120);
-  line-height: 1;
   transform: translateY(110%);
+}
+
+.logoImage {
+  display: block;
+  width: auto;
+  height: calc(var(--u) * 84);
 }
 
 .counter {
@@ -34,8 +37,8 @@
 }
 
 @media (min-width: 768px) {
-  .logo {
-    font-size: calc(var(--u) * 200);
+  .logoImage {
+    height: calc(var(--u) * 140);
   }
 
   .counter {

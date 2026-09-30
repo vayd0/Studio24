@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
@@ -94,7 +95,7 @@ export default function Intro() {
     <div ref={rootRef} className={styles.intro} data-intro-overlay aria-hidden="true">
       <span className={styles.logoMask}>
         <span ref={logoRef} className={styles.logo}>
-          24
+          <Image src="/icons/logo-24.svg" alt="" width={158.7745} height={213.3} className={styles.logoImage} preload />
         </span>
       </span>
       <span ref={counterRef} className={styles.counter}>

@@ -44,7 +44,8 @@ const projects: Project[] = [
 
 function pinHorizontalScroll(section: HTMLElement, track: HTMLElement, isMobile: boolean) {
   const { scrollRatio, scrub, snapDuration } = isMobile ? settings.mobile : settings.desktop;
-  const total = HOLD_START + 1 + HOLD_END;
+  const holdStart = isMobile ? 0 : HOLD_START;
+  const total = holdStart + 1 + HOLD_END;
 
   const cards = () => Array.from(track.children) as HTMLElement[];
   const cardOffset = (card: HTMLElement) => card.offsetLeft + card.offsetWidth / 2 - section.clientWidth / 2;
@@ -52,27 +53,39 @@ function pinHorizontalScroll(section: HTMLElement, track: HTMLElement, isMobile:
     const last = cards().at(-1);
     return last ? Math.max(0, cardOffset(last)) : 0;
   };
-  const snapPoints = () => {
+  const leadIn = () => (isMobile ? Math.max(0, (window.innerHeight - section.offsetHeight) / 2) : 0);
+  const scrollLength = () => distance() * scrollRatio * total;
+
+  const pin = ScrollTrigger.create({
+    trigger: section,
+    start: "center center",
+    end: () => `+=${Math.max(scrollLength() - leadIn(), scrollLength() / 2)}`,
+    pin: true,
+    invalidateOnRefresh: true,
+  });
+
+  const snapPoints = (pinStart: number) => {
     const d = distance();
-    if (!d) return [0, 1];
-    const points = cards().map((card) => (HOLD_START + Math.min(1, Math.max(0, cardOffset(card) / d))) / total);
-    return [0, ...points, 1];
+    if (!d) return [pinStart, 1];
+    const points = cards().map((card) => (holdStart + Math.min(1, Math.max(0, cardOffset(card) / d))) / total);
+    return [pinStart, ...points.filter((point) => point > pinStart), 1];
   };
 
   gsap
     .timeline({
       scrollTrigger: {
         trigger: section,
-        start: "center center",
-        end: () => `+=${distance() * scrollRatio * total}`,
-        pin: true,
+        start: isMobile ? "bottom bottom" : "center center",
+        end: () => pin.end,
         scrub,
         invalidateOnRefresh: true,
         snap: {
           snapTo: (value, self) => {
-            const points = snapPoints();
+            const pinStart = self ? (pin.start - self.start) / (self.end - self.start) : 0;
+            if (value < pinStart - 0.001) return value;
+            const points = snapPoints(pinStart);
             if ((self?.direction ?? 1) > 0) return points.find((point) => point >= value - 0.001) ?? 1;
-            return points.findLast((point) => point <= value + 0.001) ?? 0;
+            return points.findLast((point) => point <= value + 0.001) ?? pinStart;
           },
           duration: snapDuration,
           delay: 0.1,
@@ -81,7 +94,7 @@ function pinHorizontalScroll(section: HTMLElement, track: HTMLElement, isMobile:
         },
       },
     })
-    .to({}, { duration: HOLD_START })
+    .to({}, { duration: holdStart })
     .to(track, { x: () => -distance(), ease: "none", duration: 1 })
     .fromTo(
       track.querySelectorAll("[data-parallax-x]"),
