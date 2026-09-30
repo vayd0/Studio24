@@ -1,0 +1,45 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  background: #050505;
+  color: #fff;
+  will-change: transform;
+}
+
+.logoMask {
+  display: block;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.logo {
+  display: block;
+  font-family: var(--font-kaigo);
+  font-size: calc(var(--u) * 120);
+  line-height: 1;
+  transform: translateY(110%);
+}
+
+.counter {
+  position: absolute;
+  right: var(--gutter);
+  bottom: calc(var(--u) * 32);
+  font-size: calc(var(--u) * 16);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: calc(var(--u) * 200);
+  }
+
+  .counter {
+    bottom: calc(var(--u) * 40);
+    font-size: calc(var(--u) * 20);
+  }
+}

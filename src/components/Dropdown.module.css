@@ -1,0 +1,184 @@
+.dropdown {
+  --dd-height: calc(var(--u) * 59.28);
+  --dd-radius: calc(var(--u) * 13.97);
+  --dd-font: calc(var(--u) * 24.21);
+  --dd-gap: calc(var(--u) * 18.62);
+  --dd-pad-left: calc(var(--u) * 22.23);
+  --dd-pad-right: calc(var(--u) * 18.62);
+  --dd-chevron-w: calc(var(--u) * 23.66);
+  --dd-chevron-h: calc(var(--u) * 13.15);
+  --dd-offset: calc(var(--u) * 8);
+  --dd-ease: cubic-bezier(0.76, 0, 0.24, 1);
+  --dd-ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  z-index: 20;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--dd-gap);
+  width: 100%;
+  height: var(--dd-height);
+  padding-inline: var(--dd-pad-left) var(--dd-pad-right);
+  border-radius: var(--dd-radius);
+  background: #000;
+  color: #fff;
+  font-size: var(--dd-font);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.trigger:hover,
+.dropdown[data-open="true"] .trigger {
+  background: #1a1a1a;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.chevron {
+  flex: none;
+  width: var(--dd-chevron-w);
+  height: var(--dd-chevron-h);
+  transition: transform 0.6s var(--dd-ease-out);
+}
+
+.dropdown[data-open="true"] .chevron {
+  transform: rotate(-180deg);
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listbox {
+  position: absolute;
+  top: calc(100% + var(--dd-offset));
+  left: 0;
+  min-width: 100%;
+  padding: calc(var(--u) * 6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--dd-radius);
+  background: #050505;
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  clip-path: inset(0 0 100% 0 round var(--dd-radius));
+  transform: translateY(calc(var(--u) * -6));
+  transition:
+    clip-path 0.4s var(--dd-ease),
+    transform 0.4s var(--dd-ease),
+    visibility 0s linear 0.4s;
+}
+
+.dropdown[data-open="true"] .listbox {
+  visibility: visible;
+  clip-path: inset(0 0 0 0 round var(--dd-radius));
+  transform: translateY(0);
+  transition:
+    clip-path 0.7s var(--dd-ease-out),
+    transform 0.7s var(--dd-ease-out),
+    visibility 0s;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dd-gap);
+  padding: calc(var(--u) * 12) calc(var(--u) * 14);
+  border-radius: calc(var(--dd-radius) * 0.7);
+  font-size: var(--dd-font);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(calc(var(--u) * 10));
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.25s ease;
+}
+
+.dropdown[data-open="true"] .option {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease calc(0.1s + var(--i) * 0.05s),
+    transform 0.7s var(--dd-ease-out) calc(0.1s + var(--i) * 0.05s),
+    background-color 0.25s ease;
+}
+
+.option[data-active="true"] {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.optionText {
+  transition: transform 0.4s var(--dd-ease-out);
+}
+
+.option[data-active="true"] .optionText {
+  transform: translateX(calc(var(--u) * 4));
+}
+
+.check {
+  flex: none;
+  width: calc(var(--u) * 16);
+  height: calc(var(--u) * 12);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.option[aria-selected="true"] .check {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.5s var(--dd-ease-out) 0.25s;
+}
+
+@media (min-width: 768px) {
+  .dropdown {
+    --dd-height: calc(var(--u) * 78.4);
+    --dd-radius: calc(var(--u) * 18.38);
+    --dd-font: calc(var(--u) * 31.85);
+    --dd-gap: calc(var(--u) * 24.5);
+    --dd-pad-left: calc(var(--u) * 22);
+    --dd-pad-right: calc(var(--u) * 24.5);
+    --dd-chevron-w: calc(var(--u) * 31.13);
+    --dd-chevron-h: calc(var(--u) * 17.3);
+    --dd-offset: calc(var(--u) * 10);
+  }
+
+  .listbox {
+    padding: calc(var(--u) * 8);
+  }
+
+  .option {
+    padding: calc(var(--u) * 16) calc(var(--u) * 18);
+    white-space: nowrap;
+  }
+
+  .check {
+    width: calc(var(--u) * 20);
+    height: calc(var(--u) * 15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown *,
+  .dropdown {
+    transition-duration: 0.01s !important;
+    transition-delay: 0s !important;
+  }
+}

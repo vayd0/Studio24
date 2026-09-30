@@ -1,0 +1,303 @@
+.footer {
+  --u: calc(var(--u-base) * 0.8);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "title"
+    "form"
+    "email"
+    "info";
+  margin-top: calc(var(--u-base) * 87);
+  padding: 0 calc(var(--u-base) * 35) calc(var(--u-base) * 50) calc(var(--u-base) * 34);
+}
+
+.title {
+  grid-area: title;
+  max-width: calc(var(--u) * 310);
+  padding-left: calc(var(--u) * 4);
+  font-size: calc(var(--u) * 36.75);
+  font-weight: 400;
+}
+
+.form {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 9.3);
+  margin-top: calc(var(--u) * 54);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 9.6);
+}
+
+.field {
+  position: relative;
+  display: flex;
+  border-radius: calc(var(--u) * 13.97);
+  background: var(--color-field);
+  font-size: calc(var(--u) * 24.21);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: calc(var(--u) * 18.62);
+  outline: none;
+}
+
+.field input {
+  height: calc(var(--u) * 59.58);
+}
+
+.field input::placeholder,
+.messagePlaceholder {
+  color: var(--color-muted);
+  opacity: 1;
+}
+
+.field:focus-within {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.message {
+  height: calc(var(--u) * 240.92);
+}
+
+.message textarea {
+  height: 100%;
+  resize: none;
+}
+
+.messagePlaceholder {
+  position: absolute;
+  left: calc(var(--u) * 18.62);
+  bottom: calc(var(--u) * 18.62);
+  pointer-events: none;
+}
+
+.message textarea:not(:placeholder-shown) + .messagePlaceholder {
+  display: none;
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(var(--u) * 59.28);
+  padding: calc(var(--u) * 18.62);
+  border-radius: calc(var(--u) * 13.97);
+  background: #000;
+  color: #fff;
+  font-size: calc(var(--u) * 24.21);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+  background: #1a1a1a;
+}
+
+.submit:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.email {
+  grid-area: email;
+  display: flex;
+  flex-direction: column;
+  margin-top: calc(var(--u) * 78.5);
+}
+
+.emailLabel {
+  padding-left: calc(var(--u) * 1.57);
+  font-size: calc(var(--u) * 15.68);
+  line-height: 0.8;
+}
+
+.emailLink {
+  font-size: calc(var(--u) * 31.36);
+  white-space: nowrap;
+}
+
+.info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 84.53);
+  margin-top: calc(var(--u) * 4);
+  font-size: calc(var(--u) * 27.56);
+}
+
+.socialLinks {
+  display: flex;
+  align-items: flex-start;
+}
+
+.instagram {
+  width: calc(var(--u) * 44.1);
+  height: calc(var(--u) * 44.1);
+  margin-top: calc(var(--u) * 1.84);
+}
+
+.behanceLink {
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 45.94);
+  height: calc(var(--u) * 45.94);
+}
+
+.behance {
+  width: calc(var(--u) * 32.76);
+  height: calc(var(--u) * 33.01);
+}
+
+.disclaimer {
+  max-width: calc(var(--u) * 320);
+  margin-top: calc(var(--u) * 24);
+  padding-left: calc(var(--u) * 4);
+  font-size: calc(var(--u) * 17);
+}
+
+.copyright {
+  margin-top: calc(var(--u) * 28);
+  padding-left: calc(var(--u) * 2);
+  font-size: calc(var(--u) * 22.3);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    --u: calc(var(--u-base) * 0.75);
+    grid-template-columns: auto calc(var(--u) * 852.03);
+    grid-template-areas:
+      "email title"
+      "info form";
+    justify-content: space-between;
+    align-items: center;
+    column-gap: calc(var(--u) * 40);
+    margin-top: calc(var(--u-base) * 93.4);
+    padding: 0 calc(var(--u-base) * 78.2) calc(var(--u-base) * 30.1) calc(var(--u-base) * 75.95);
+  }
+
+  .title {
+    width: max-content;
+    max-width: none;
+    padding-left: calc(var(--u) * 8.4);
+    font-size: calc(var(--u) * 73.5);
+    white-space: nowrap;
+  }
+
+  .form {
+    align-self: start;
+    gap: calc(var(--u) * 12.25);
+    margin-top: calc(var(--u) * 44);
+  }
+
+  .row {
+    flex-direction: row;
+    gap: calc(var(--u) * 16.94);
+  }
+
+  .field {
+    border-radius: calc(var(--u) * 18.38);
+    font-size: calc(var(--u) * 31.85);
+  }
+
+  .select {
+    flex: 0 0 auto;
+    min-width: calc(var(--u) * 411.49);
+  }
+
+  .row .field {
+    flex: 1;
+  }
+
+  .field input,
+  .field textarea {
+    padding: calc(var(--u) * 24.5);
+  }
+
+  .field input {
+    height: calc(var(--u) * 78.4);
+  }
+
+  .message {
+    height: calc(var(--u) * 154);
+  }
+
+  .messagePlaceholder {
+    left: calc(var(--u) * 24.5);
+    bottom: calc(var(--u) * 24.5);
+  }
+
+  .submit {
+    height: calc(var(--u) * 78);
+    padding: calc(var(--u) * 24.5);
+    border-radius: calc(var(--u) * 18.38);
+    font-size: calc(var(--u) * 31.85);
+  }
+
+  .email {
+    margin-top: 0;
+  }
+
+  .emailLabel {
+    padding-left: calc(var(--u) * 2.45);
+    font-size: calc(var(--u) * 24.5);
+  }
+
+  .emailLink {
+    font-size: calc(var(--u) * 49);
+  }
+
+  .info {
+    align-self: start;
+    margin-top: calc(var(--u) * 54);
+  }
+
+  .social {
+    gap: calc(var(--u) * 112.7);
+    margin-top: 0;
+    padding-left: calc(var(--u) * 2.45);
+    font-size: calc(var(--u) * 36.75);
+  }
+
+  .instagram {
+    width: calc(var(--u) * 58.8);
+    height: calc(var(--u) * 58.8);
+    margin-top: calc(var(--u) * 2.45);
+  }
+
+  .behanceLink {
+    width: calc(var(--u) * 61.25);
+    height: calc(var(--u) * 61.25);
+  }
+
+  .behance {
+    width: calc(var(--u) * 43.68);
+    height: calc(var(--u) * 44.01);
+  }
+
+  .disclaimer {
+    max-width: calc(var(--u) * 414.05);
+    margin-top: calc(var(--u) * 70);
+    padding-left: calc(var(--u) * 4.9);
+    font-size: calc(var(--u) * 24.5);
+  }
+
+  .copyright {
+    margin-top: calc(var(--u) * 19);
+    padding-left: 0;
+    font-size: calc(var(--u) * 31.85);
+  }
+}

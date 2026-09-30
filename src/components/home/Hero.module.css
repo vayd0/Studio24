@@ -1,0 +1,105 @@
+.hero {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: calc(var(--u) * 735) auto;
+}
+
+.media {
+  grid-area: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 calc(var(--u) * 30) calc(var(--u) * 30);
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.parallax {
+  position: absolute;
+  inset: -18% 0;
+  will-change: transform;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.topbar {
+  grid-area: 1 / 1;
+  align-self: start;
+  z-index: 10;
+  margin: calc(var(--u) * 51) var(--gutter) 0;
+}
+
+.intro {
+  display: contents;
+}
+
+.title {
+  grid-area: 1 / 1;
+  align-self: end;
+  z-index: 1;
+  width: calc(var(--u) * 332);
+  max-width: calc(100% - 2 * var(--u) * 30.5);
+  margin: 0 0 calc(var(--u) * 27) calc(var(--u) * 30.5);
+  font-size: calc(var(--u) * 24);
+  font-weight: 400;
+  color: #fff;
+}
+
+.lead {
+  grid-area: 2 / 1;
+  max-width: calc(var(--u) * 320);
+  margin: calc(var(--u) * 38) var(--gutter) 0 calc(var(--u) * 31);
+  font-size: calc(var(--u) * 20);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    grid-template-rows: calc(var(--u) * 831.87);
+    margin: calc(var(--u) * 51.45) var(--gutter) 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .media {
+    border-radius: 0;
+  }
+
+  .topbar {
+    margin: calc(var(--u) * 70.85) calc(var(--u) * 67) 0;
+  }
+
+  .intro {
+    grid-area: 1 / 1;
+    align-self: end;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--u) * 76.1);
+    width: calc(var(--u) * 1000);
+    max-width: 100%;
+    padding: calc(var(--u) * 55.11) calc(var(--u) * 94.47) calc(var(--u) * 55.11) calc(var(--u) * 65.6);
+    backdrop-filter: blur(calc(var(--u) * 50));
+    -webkit-backdrop-filter: blur(calc(var(--u) * 50));
+    color: #fff;
+  }
+
+  .title {
+    align-self: stretch;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    font-size: calc(var(--u) * 41.99);
+  }
+
+  .lead {
+    max-width: calc(var(--u) * 677.05);
+    margin: 0;
+    font-size: calc(var(--u) * 31.49);
+  }
+}
