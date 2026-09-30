@@ -76,6 +76,7 @@
   }
 
   .text {
+    flex: 0 1 calc(var(--u) * 644.35);
     max-width: calc(var(--u) * 644.35);
     font-size: calc(var(--u) * 33.08);
   }
