@@ -35,18 +35,24 @@
   transition: opacity 0.6s ease;
 }
 
-.sheet,
-.panel {
+.drawer {
   position: absolute;
   top: var(--menu-gap);
   right: var(--menu-gap);
-  bottom: var(--menu-gap);
+  display: flex;
   width: var(--menu-width);
+  max-height: calc(100% - 2 * var(--menu-gap));
+}
+
+.sheet,
+.panel {
   border-radius: var(--menu-radius);
   transform: translateX(calc(100% + var(--menu-gap)));
 }
 
 .sheet {
+  position: absolute;
+  inset: 0;
   background: #2a2a2a;
   transition: transform 0.7s var(--menu-ease) 0.12s;
 }
@@ -57,8 +63,10 @@
 }
 
 .panel {
+  position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: var(--menu-pad);
   overflow-y: auto;
   background: #050505;
@@ -131,10 +139,9 @@
 }
 
 .nav {
-  flex: 1;
   display: flex;
   align-items: center;
-  padding-block: calc(var(--u) * 32);
+  padding-block: calc(var(--u) * 40) calc(var(--u) * 48);
 }
 
 .list {
@@ -263,6 +270,15 @@
     --menu-width: calc(var(--u) * 640);
     --menu-radius: calc(var(--u) * 24);
     --menu-pad: calc(var(--u) * 40);
+  }
+
+  .drawer {
+    bottom: var(--menu-gap);
+  }
+
+  .nav {
+    flex: 1;
+    padding-block: calc(var(--u) * 32);
   }
 
   .label {

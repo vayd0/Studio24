@@ -134,6 +134,7 @@
 .social {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: calc(var(--u) * 84.53);
   margin-top: calc(var(--u) * 4);
   font-size: calc(var(--u) * 27.56);
@@ -163,7 +164,6 @@
 }
 
 .disclaimer {
-  max-width: calc(var(--u) * 320);
   margin-top: calc(var(--u) * 24);
   padding-left: calc(var(--u) * 4);
   font-size: calc(var(--u) * 17);
@@ -266,6 +266,7 @@
   }
 
   .social {
+    justify-content: flex-start;
     gap: calc(var(--u) * 112.7);
     margin-top: 0;
     padding-left: calc(var(--u) * 2.45);

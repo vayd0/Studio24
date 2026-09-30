@@ -73,55 +73,57 @@ export default function Menu({ id, open, onClose }: MenuProps) {
   return (
     <div className={styles.root} data-open={open} inert={!open}>
       <div className={styles.overlay} onClick={onClose} aria-hidden="true" />
-      <div className={styles.sheet} aria-hidden="true" />
+      <div className={styles.drawer}>
+        <div className={styles.sheet} aria-hidden="true" />
 
-      <div
-        ref={panelRef}
-        id={id}
-        className={styles.panel}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menu"
-        onKeyDown={trapFocus}
-      >
-        <div className={styles.header}>
-          <span className={styles.label}>Menu</span>
-          <button ref={closeRef} type="button" className={styles.close} onClick={onClose} aria-label="Fermer le menu">
-            <span className={styles.closeLine} />
-            <span className={styles.closeLine} />
-          </button>
-        </div>
-
-        <nav className={styles.nav} aria-label="Menu principal">
-          <ul className={styles.list}>
-            {links.map((link, index) => (
-              <li key={link.href} className={styles.item} style={{ "--i": index } as CSSProperties}>
-                <a href={link.href} className={styles.link} onClick={(event) => navigate(event, link.href)}>
-                  <span className={styles.linkInner}>
-                    <span className={styles.index}>{String(index + 1).padStart(2, "0")}</span>
-                    <span className={styles.text}>{link.label}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className={styles.footer}>
-          <div className={styles.footerBlock}>
-            <span className={styles.footerLabel}>Email</span>
-            <a href="mailto:contact@studio24.fr" className={styles.footerLink}>
-              contact@studio24.fr
-            </a>
+        <div
+          ref={panelRef}
+          id={id}
+          className={styles.panel}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          onKeyDown={trapFocus}
+        >
+          <div className={styles.header}>
+            <span className={styles.label}>Menu</span>
+            <button ref={closeRef} type="button" className={styles.close} onClick={onClose} aria-label="Fermer le menu">
+              <span className={styles.closeLine} />
+              <span className={styles.closeLine} />
+            </button>
           </div>
-          <div className={styles.footerBlock}>
-            <span className={styles.footerLabel}>Nous suivre</span>
-            <div className={styles.socials}>
-              {socials.map((social) => (
-                <a key={social.label} href={social.href} target="_blank" rel="noreferrer" className={styles.footerLink}>
-                  {social.label}
-                </a>
+
+          <nav className={styles.nav} aria-label="Menu principal">
+            <ul className={styles.list}>
+              {links.map((link, index) => (
+                <li key={link.href} className={styles.item} style={{ "--i": index } as CSSProperties}>
+                  <a href={link.href} className={styles.link} onClick={(event) => navigate(event, link.href)}>
+                    <span className={styles.linkInner}>
+                      <span className={styles.index}>{String(index + 1).padStart(2, "0")}</span>
+                      <span className={styles.text}>{link.label}</span>
+                    </span>
+                  </a>
+                </li>
               ))}
+            </ul>
+          </nav>
+
+          <div className={styles.footer}>
+            <div className={styles.footerBlock}>
+              <span className={styles.footerLabel}>Email</span>
+              <a href="mailto:contact@studio24.fr" className={styles.footerLink}>
+                contact@studio24.fr
+              </a>
+            </div>
+            <div className={styles.footerBlock}>
+              <span className={styles.footerLabel}>Nous suivre</span>
+              <div className={styles.socials}>
+                {socials.map((social) => (
+                  <a key={social.label} href={social.href} target="_blank" rel="noreferrer" className={styles.footerLink}>
+                    {social.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
