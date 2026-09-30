@@ -131,16 +131,14 @@ export default function Projects() {
           <li key={index} className={styles.card}>
             <div className={styles.media} data-reveal="media">
               {project.image && (
-                <div className={styles.parallaxY} data-parallax="7">
-                  <div className={styles.parallaxX} data-parallax-x>
-                    <Image
-                      src={project.image.src}
-                      alt={project.image.alt}
-                      fill
-                      sizes="(min-width: 768px) 570px, 360px"
-                      className={styles.image}
-                    />
-                  </div>
+                <div className={styles.parallaxX} data-parallax-x>
+                  <Image
+                    src={project.image.src}
+                    alt={project.image.alt}
+                    fill
+                    sizes="(min-width: 768px) 570px, 360px"
+                    className={styles.image}
+                  />
                 </div>
               )}
             </div>

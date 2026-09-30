@@ -43,12 +43,6 @@
   background: var(--color-placeholder);
 }
 
-.parallaxY {
-  position: absolute;
-  inset: -10% 0;
-  will-change: transform;
-}
-
 .parallaxX {
   position: absolute;
   inset: 0 -12%;
